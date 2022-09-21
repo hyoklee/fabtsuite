@@ -1,5 +1,24 @@
 # Developer's Guide
 
+## Testing older versions of libfabric.
+
+You need to modify the following 2 files.
+
+1. Modify [FindLIBFABRIC.cmake](../cmake/FindLIBFABRIC.cmake).
+
+```
+-    pkg_check_modules(PC_LIBFABRIC libfabric>=1.13)
++    pkg_check_modules(PC_LIBFABRIC libfabric)
+```
+
+2. Modify [fabtget.c](../transfer/fabtget.c).
+```
+-      fi_getinfo(FI_VERSION(1, 13), NULL, NULL, 0, hints, &global_state.info);
+-
++      fi_getinfo(FI_VERSION(1, 11), NULL, NULL, 0, hints, &global_state.info);
+```
+
+
 ## Naming Conventions
 
 There are 6 abbreviations (a.) for testing features:
@@ -17,7 +36,8 @@ All multi-node scripts start with `fabt` and have file extension like `.sh`.
 
 ## Debugging with hlog
 
-  
+Use `hlog_fast(err, "Your debugging message");`.
+
 ## Single-Node Test
 
 [test/test.sh](../test/test.sh) is used to check if programs run correctly
