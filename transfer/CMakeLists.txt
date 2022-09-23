@@ -13,8 +13,13 @@ include_directories(${LIBFABRIC_INCLUDE_DIRS} ../hlog)
 add_executable(fabtget fabtget.c)
 message(STATUS "LIBFABRIC_LIBDIR=${LIBFABRIC_LIBDIR}")
 target_link_directories(fabtget PUBLIC ../hlog ${LIBFABRIC_LIBDIR})
+# For Theta
+# target_link_directories(fabtget PUBLIC ../hlog ${LIBFABRIC_LIBDIR} ${GNI_LIBDIR} ${UDREG_LIBDIR} ${ALPSUTIL_LIBDIR})
 message(STATUS "LIBFABRIC_LIBRARIES=${LIBFABRIC_LIBRARIES}")
+
 target_link_libraries(fabtget hlog ${LIBFABRIC_LIBRARIES})
+# For Theta
+# target_link_libraries(fabtget hlog ${LIBFABRIC_LIBRARIES} ${UDREG_LIBRARIES} ${GNI_LIBRARIES})
 install(TARGETS fabtget RUNTIME DESTINATION bin)
 install(CODE "execute_process(
     COMMAND bash -c \"set -e

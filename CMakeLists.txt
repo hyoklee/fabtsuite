@@ -4,8 +4,12 @@ project(fabtsuite)
 # Populate build type if building from ccmake, etc.
 set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
-
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/FindLIBFABRIC.cmake)
+
+# For Theta
+# include(${CMAKE_CURRENT_LIST_DIR}/cmake/FindGNI.cmake)
+# include(${CMAKE_CURRENT_LIST_DIR}/cmake/FindUDREG.cmake)
+# include(${CMAKE_CURRENT_LIST_DIR}/cmake/FindALPSUTIL.cmake)
 
 enable_testing()
 include(CTest)
