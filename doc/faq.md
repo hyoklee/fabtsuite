@@ -2,7 +2,7 @@
 
 ## How can I use a different `libfabric` provider like `cxi`?
 
- Use `FI_PROIVDER` enviornment variable.
+ Use `FI_PROIVDER` environment variable.
  For example, if you set it to `cxi`, 
  you will get a shorter address output than `tcp`.
  
