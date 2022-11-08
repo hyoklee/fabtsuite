@@ -35,6 +35,20 @@ export PATH=$PREFIX/bin:$PATH
 
   The `PREFIX` is where Spack installed the `libfabric` and `fabtsuite` package.
 
+## How can I try the older libfabric version?
+
+1. Modify [FindLIBFABRIC.cmake](../cmake/FindLIBFABRIC.cmake).
+```
+    pkg_check_modules(PC_LIBFABRIC libfabric>=1.13)
+```
+
+2. Modify [fabtget.c](../transfer/fabtget.c).
+```
+    rc =
+        fi_getinfo(FI_VERSION(1, 13), NULL, NULL, 0, hints, &global_state.info);
+```
+
+
 ## What is the default timeout value for CTest?
 
   It is 1500 seconds (= 25 minutes).
