@@ -16,7 +16,7 @@
 02:00:a2:77:0a:81:03:0d:00:00:00:00:00:00:00:00
 ```
 
-  See also (wait.slurm)(../test/wait.slurm) as an example job script.
+  See also [wait.slurm](../test/wait.slurm) as an example job script.
 
 ## GitHub Action fails with `Error: Process completed with exit code 145.` Why?
 
