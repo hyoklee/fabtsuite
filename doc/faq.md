@@ -1,32 +1,9 @@
 # FAQ
 
-## How can I use a different `libfabric` provider like `cxi`?
-
- Use `FI_PROIVDER` environment variable.
- For example, if you set it to `cxi`, 
- you will get a shorter address output than `tcp`.
- 
-```
-[hyoklee@login2.crusher transfer]$ export FI_PROVIDER=cxi
-[hyoklee@login2.crusher transfer]$ ./fabtget
-00:64:25:20
- 
-[hyoklee@login2.crusher transfer]$ export FI_PROVIDER=tcp
-[hyoklee@login2.crusher transfer]$ ./fabtget
-02:00:a2:77:0a:81:03:0d:00:00:00:00:00:00:00:00
-```
-
-  See also [wait.slurm](../test/wait.slurm) as an example job script.
-
-## GitHub Action fails with `Error: Process completed with exit code 145.` Why?
-
-  We don't know the reason yet. However, you can try to run the failed job
-  again and it will pass eventually.
-  
 ## I get the `available libfabric version< 1.13` error when I run programs.
 
-  Install fabtsuite using Spack.
-  Then, update `LD_LIBRARY_PATH` and `PATH` like as follows.
+  Install `fabtsuite` using [Spack](building_spack.md).
+  Then, update `LD_LIBRARY_PATH` and `PATH`.
 
 ```
 export LD_LIBRARY_PATH=$PREFIX/lib:$LD_LIBRARY_PATH
@@ -48,6 +25,23 @@ export PATH=$PREFIX/bin:$PATH
         fi_getinfo(FI_VERSION(1, 13), NULL, NULL, 0, hints, &global_state.info);
 ```
 
+## How can I use a different `libfabric` provider like `cxi`?
+
+ Use `FI_PROIVDER` environment variable.
+ For example, if you set it to `cxi`, 
+ you will get a shorter address output than `tcp`.
+ 
+```
+[hyoklee@login2.crusher transfer]$ export FI_PROVIDER=cxi
+[hyoklee@login2.crusher transfer]$ ./fabtget
+00:64:25:20
+ 
+[hyoklee@login2.crusher transfer]$ export FI_PROVIDER=tcp
+[hyoklee@login2.crusher transfer]$ ./fabtget
+02:00:a2:77:0a:81:03:0d:00:00:00:00:00:00:00:00
+```
+
+  See also [wait.slurm](../test/wait.slurm) as an example job script.
 
 ## What is the default timeout value for CTest?
 
@@ -63,3 +57,8 @@ export PATH=$PREFIX/bin:$PATH
     Start 7: vectored-IO
 ```
 
+## GitHub Action fails with `Error: Process completed with exit code 145.` Why?
+
+  We don't know the reason yet. However, you can try to run the failed job
+  again and it will pass eventually.
+  
